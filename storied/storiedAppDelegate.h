@@ -8,20 +8,17 @@
 
 #import <UIKit/UIKit.h>
 
-@class RootViewController;
+@class StoriesListViewController;
 
-@class DetailViewController;
+@class StoryViewController;
 
 @interface storiedAppDelegate : NSObject <UIApplicationDelegate> {
 
 }
 
 @property (nonatomic, retain) IBOutlet UIWindow *window;
-
 @property (nonatomic, retain) IBOutlet UISplitViewController *splitViewController;
-
-@property (nonatomic, retain) IBOutlet RootViewController *rootViewController;
-
-@property (nonatomic, retain) IBOutlet DetailViewController *detailViewController;
+@property (nonatomic, retain) IBOutlet StoriesListViewController *storiesListViewController;
+@property (nonatomic, retain) IBOutlet StoryViewController *storyViewController;
 
 @end

@@ -14,9 +14,6 @@
 		8C4795B413D284AB00E72C6B /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C4795B313D284AB00E72C6B /* main.m */; };
 		8C4795B713D284AB00E72C6B /* storiedAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C4795B613D284AB00E72C6B /* storiedAppDelegate.m */; };
 		8C4795BA13D284AB00E72C6B /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8C4795B813D284AB00E72C6B /* MainWindow.xib */; };
-		8C4795BD13D284AB00E72C6B /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C4795BC13D284AB00E72C6B /* DetailViewController.m */; };
-		8C4795C013D284AB00E72C6B /* DetailView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8C4795BE13D284AB00E72C6B /* DetailView.xib */; };
-		8C4795C313D284AB00E72C6B /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C4795C213D284AB00E72C6B /* RootViewController.m */; };
 		8C4795CA13D284AB00E72C6B /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8C4795A613D284AB00E72C6B /* UIKit.framework */; };
 		8C4795CB13D284AB00E72C6B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8C4795A813D284AB00E72C6B /* Foundation.framework */; };
 		8C4795CC13D284AB00E72C6B /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8C4795AA13D284AB00E72C6B /* CoreGraphics.framework */; };
@@ -45,6 +42,10 @@
 		8C47965913D29B0800E72C6B /* libBlocksKit.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8C47965813D29B0800E72C6B /* libBlocksKit.a */; };
 		8C47965B13D29DE400E72C6B /* StorifyStoryTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C47965A13D29DE400E72C6B /* StorifyStoryTest.m */; };
 		8C47965D13D2A95800E72C6B /* StorifyUserTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C47965C13D2A95800E72C6B /* StorifyUserTest.m */; };
+		8C47966113D2AD7400E72C6B /* StoriesListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C47965F13D2AD7400E72C6B /* StoriesListViewController.m */; };
+		8C47966213D2AD7400E72C6B /* StoriesListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8C47966013D2AD7400E72C6B /* StoriesListViewController.xib */; };
+		8C47966613D2AD9D00E72C6B /* StoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C47966413D2AD9D00E72C6B /* StoryViewController.m */; };
+		8C47966713D2AD9D00E72C6B /* StoryViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8C47966513D2AD9D00E72C6B /* StoryViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -104,11 +105,6 @@
 		8C4795B513D284AB00E72C6B /* storiedAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = storiedAppDelegate.h; sourceTree = "<group>"; };
 		8C4795B613D284AB00E72C6B /* storiedAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = storiedAppDelegate.m; sourceTree = "<group>"; };
 		8C4795B913D284AB00E72C6B /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainWindow.xib; sourceTree = "<group>"; };
-		8C4795BB13D284AB00E72C6B /* DetailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DetailViewController.h; sourceTree = "<group>"; };
-		8C4795BC13D284AB00E72C6B /* DetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DetailViewController.m; sourceTree = "<group>"; };
-		8C4795BF13D284AB00E72C6B /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/DetailView.xib; sourceTree = "<group>"; };
-		8C4795C113D284AB00E72C6B /* RootViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RootViewController.h; sourceTree = "<group>"; };
-		8C4795C213D284AB00E72C6B /* RootViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RootViewController.m; sourceTree = "<group>"; };
 		8C4795C913D284AB00E72C6B /* storiedTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = storiedTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
 		8C4795D113D284AB00E72C6B /* storiedTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "storiedTests-Info.plist"; sourceTree = "<group>"; };
 		8C4795D313D284AB00E72C6B /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
@@ -157,6 +153,12 @@
 		8C47965813D29B0800E72C6B /* libBlocksKit.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libBlocksKit.a; sourceTree = SOURCE_ROOT; };
 		8C47965A13D29DE400E72C6B /* StorifyStoryTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StorifyStoryTest.m; sourceTree = "<group>"; };
 		8C47965C13D2A95800E72C6B /* StorifyUserTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StorifyUserTest.m; sourceTree = "<group>"; };
+		8C47965E13D2AD7400E72C6B /* StoriesListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StoriesListViewController.h; sourceTree = "<group>"; };
+		8C47965F13D2AD7400E72C6B /* StoriesListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StoriesListViewController.m; sourceTree = "<group>"; };
+		8C47966013D2AD7400E72C6B /* StoriesListViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StoriesListViewController.xib; sourceTree = "<group>"; };
+		8C47966313D2AD9D00E72C6B /* StoryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StoryViewController.h; sourceTree = "<group>"; };
+		8C47966413D2AD9D00E72C6B /* StoryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StoryViewController.m; sourceTree = "<group>"; };
+		8C47966513D2AD9D00E72C6B /* StoryViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StoryViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -234,7 +236,6 @@
 				8C4795B513D284AB00E72C6B /* storiedAppDelegate.h */,
 				8C4795B613D284AB00E72C6B /* storiedAppDelegate.m */,
 				8C4795B813D284AB00E72C6B /* MainWindow.xib */,
-				8C4795BE13D284AB00E72C6B /* DetailView.xib */,
 				8C4795AD13D284AB00E72C6B /* Supporting Files */,
 			);
 			path = storied;
@@ -278,10 +279,12 @@
 		8C4795E213D284F500E72C6B /* controllers */ = {
 			isa = PBXGroup;
 			children = (
-				8C4795BB13D284AB00E72C6B /* DetailViewController.h */,
-				8C4795BC13D284AB00E72C6B /* DetailViewController.m */,
-				8C4795C113D284AB00E72C6B /* RootViewController.h */,
-				8C4795C213D284AB00E72C6B /* RootViewController.m */,
+				8C47965E13D2AD7400E72C6B /* StoriesListViewController.h */,
+				8C47965F13D2AD7400E72C6B /* StoriesListViewController.m */,
+				8C47966013D2AD7400E72C6B /* StoriesListViewController.xib */,
+				8C47966313D2AD9D00E72C6B /* StoryViewController.h */,
+				8C47966413D2AD9D00E72C6B /* StoryViewController.m */,
+				8C47966513D2AD9D00E72C6B /* StoryViewController.xib */,
 			);
 			name = controllers;
 			sourceTree = "<group>";
@@ -531,7 +534,8 @@
 			files = (
 				8C4795B113D284AB00E72C6B /* InfoPlist.strings in Resources */,
 				8C4795BA13D284AB00E72C6B /* MainWindow.xib in Resources */,
-				8C4795C013D284AB00E72C6B /* DetailView.xib in Resources */,
+				8C47966213D2AD7400E72C6B /* StoriesListViewController.xib in Resources */,
+				8C47966713D2AD9D00E72C6B /* StoryViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -569,8 +573,6 @@
 			files = (
 				8C4795B413D284AB00E72C6B /* main.m in Sources */,
 				8C4795B713D284AB00E72C6B /* storiedAppDelegate.m in Sources */,
-				8C4795BD13D284AB00E72C6B /* DetailViewController.m in Sources */,
-				8C4795C313D284AB00E72C6B /* RootViewController.m in Sources */,
 				8C4795EA13D2857600E72C6B /* StorifyUser.m in Sources */,
 				8C4795ED13D2858400E72C6B /* StorifyStory.m in Sources */,
 				8C4795F013D2859900E72C6B /* StorifyElement.m in Sources */,
@@ -585,6 +587,8 @@
 				8C47961113D28E8000E72C6B /* ASINetworkQueue.m in Sources */,
 				8C47961513D28EA300E72C6B /* Reachability.m in Sources */,
 				8C47962213D28F3700E72C6B /* JSONKit.m in Sources */,
+				8C47966113D2AD7400E72C6B /* StoriesListViewController.m in Sources */,
+				8C47966613D2AD9D00E72C6B /* StoryViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -629,14 +633,6 @@
 				8C4795B913D284AB00E72C6B /* en */,
 			);
 			name = MainWindow.xib;
-			sourceTree = "<group>";
-		};
-		8C4795BE13D284AB00E72C6B /* DetailView.xib */ = {
-			isa = PBXVariantGroup;
-			children = (
-				8C4795BF13D284AB00E72C6B /* en */,
-			);
-			name = DetailView.xib;
 			sourceTree = "<group>";
 		};
 		8C4795D213D284AB00E72C6B /* InfoPlist.strings */ = {
