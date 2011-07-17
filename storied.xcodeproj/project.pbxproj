@@ -23,6 +23,9 @@
 		8C4795D413D284AB00E72C6B /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 8C4795D213D284AB00E72C6B /* InfoPlist.strings */; };
 		8C4795D713D284AB00E72C6B /* storiedTests.h in Resources */ = {isa = PBXBuildFile; fileRef = 8C4795D613D284AB00E72C6B /* storiedTests.h */; };
 		8C4795D913D284AB00E72C6B /* storiedTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C4795D813D284AB00E72C6B /* storiedTests.m */; };
+		8C4795EA13D2857600E72C6B /* StorifyUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C4795E913D2857600E72C6B /* StorifyUser.m */; };
+		8C4795ED13D2858400E72C6B /* StorifyStory.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C4795EC13D2858400E72C6B /* StorifyStory.m */; };
+		8C4795F013D2859900E72C6B /* StorifyElement.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C4795EF13D2859900E72C6B /* StorifyElement.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,24 +43,30 @@
 		8C4795A613D284AB00E72C6B /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		8C4795A813D284AB00E72C6B /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		8C4795AA13D284AB00E72C6B /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
-		8C4795AE13D284AB00E72C6B /* storied-Info.plist */ = {isa = PBXFileReference; path = "storied-Info.plist"; sourceTree = "<group>"; };
+		8C4795AE13D284AB00E72C6B /* storied-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "storied-Info.plist"; sourceTree = "<group>"; };
 		8C4795B013D284AB00E72C6B /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		8C4795B213D284AB00E72C6B /* storied-Prefix.pch */ = {isa = PBXFileReference; path = "storied-Prefix.pch"; sourceTree = "<group>"; };
+		8C4795B213D284AB00E72C6B /* storied-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "storied-Prefix.pch"; sourceTree = "<group>"; };
 		8C4795B313D284AB00E72C6B /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		8C4795B513D284AB00E72C6B /* storiedAppDelegate.h */ = {isa = PBXFileReference; path = storiedAppDelegate.h; sourceTree = "<group>"; };
+		8C4795B513D284AB00E72C6B /* storiedAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = storiedAppDelegate.h; sourceTree = "<group>"; };
 		8C4795B613D284AB00E72C6B /* storiedAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = storiedAppDelegate.m; sourceTree = "<group>"; };
 		8C4795B913D284AB00E72C6B /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainWindow.xib; sourceTree = "<group>"; };
-		8C4795BB13D284AB00E72C6B /* DetailViewController.h */ = {isa = PBXFileReference; path = DetailViewController.h; sourceTree = "<group>"; };
+		8C4795BB13D284AB00E72C6B /* DetailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DetailViewController.h; sourceTree = "<group>"; };
 		8C4795BC13D284AB00E72C6B /* DetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DetailViewController.m; sourceTree = "<group>"; };
 		8C4795BF13D284AB00E72C6B /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/DetailView.xib; sourceTree = "<group>"; };
-		8C4795C113D284AB00E72C6B /* RootViewController.h */ = {isa = PBXFileReference; path = RootViewController.h; sourceTree = "<group>"; };
+		8C4795C113D284AB00E72C6B /* RootViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RootViewController.h; sourceTree = "<group>"; };
 		8C4795C213D284AB00E72C6B /* RootViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RootViewController.m; sourceTree = "<group>"; };
 		8C4795C913D284AB00E72C6B /* storiedTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = storiedTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
-		8C4795D113D284AB00E72C6B /* storiedTests-Info.plist */ = {isa = PBXFileReference; path = "storiedTests-Info.plist"; sourceTree = "<group>"; };
+		8C4795D113D284AB00E72C6B /* storiedTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "storiedTests-Info.plist"; sourceTree = "<group>"; };
 		8C4795D313D284AB00E72C6B /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		8C4795D513D284AB00E72C6B /* storiedTests-Prefix.pch */ = {isa = PBXFileReference; path = "storiedTests-Prefix.pch"; sourceTree = "<group>"; };
+		8C4795D513D284AB00E72C6B /* storiedTests-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "storiedTests-Prefix.pch"; sourceTree = "<group>"; };
 		8C4795D613D284AB00E72C6B /* storiedTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = storiedTests.h; sourceTree = "<group>"; };
 		8C4795D813D284AB00E72C6B /* storiedTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = storiedTests.m; sourceTree = "<group>"; };
+		8C4795E813D2857600E72C6B /* StorifyUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StorifyUser.h; sourceTree = "<group>"; };
+		8C4795E913D2857600E72C6B /* StorifyUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StorifyUser.m; sourceTree = "<group>"; };
+		8C4795EB13D2858400E72C6B /* StorifyStory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StorifyStory.h; sourceTree = "<group>"; };
+		8C4795EC13D2858400E72C6B /* StorifyStory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StorifyStory.m; sourceTree = "<group>"; };
+		8C4795EE13D2859900E72C6B /* StorifyElement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StorifyElement.h; sourceTree = "<group>"; };
+		8C4795EF13D2859900E72C6B /* StorifyElement.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StorifyElement.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -116,14 +125,13 @@
 		8C4795AC13D284AB00E72C6B /* storied */ = {
 			isa = PBXGroup;
 			children = (
+				8C4795E413D2850900E72C6B /* views */,
+				8C4795E313D2850100E72C6B /* models */,
+				8C4795E213D284F500E72C6B /* controllers */,
 				8C4795B513D284AB00E72C6B /* storiedAppDelegate.h */,
 				8C4795B613D284AB00E72C6B /* storiedAppDelegate.m */,
 				8C4795B813D284AB00E72C6B /* MainWindow.xib */,
-				8C4795BB13D284AB00E72C6B /* DetailViewController.h */,
-				8C4795BC13D284AB00E72C6B /* DetailViewController.m */,
 				8C4795BE13D284AB00E72C6B /* DetailView.xib */,
-				8C4795C113D284AB00E72C6B /* RootViewController.h */,
-				8C4795C213D284AB00E72C6B /* RootViewController.m */,
 				8C4795AD13D284AB00E72C6B /* Supporting Files */,
 			);
 			path = storied;
@@ -158,6 +166,37 @@
 				8C4795D513D284AB00E72C6B /* storiedTests-Prefix.pch */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		8C4795E213D284F500E72C6B /* controllers */ = {
+			isa = PBXGroup;
+			children = (
+				8C4795BB13D284AB00E72C6B /* DetailViewController.h */,
+				8C4795BC13D284AB00E72C6B /* DetailViewController.m */,
+				8C4795C113D284AB00E72C6B /* RootViewController.h */,
+				8C4795C213D284AB00E72C6B /* RootViewController.m */,
+			);
+			name = controllers;
+			sourceTree = "<group>";
+		};
+		8C4795E313D2850100E72C6B /* models */ = {
+			isa = PBXGroup;
+			children = (
+				8C4795E813D2857600E72C6B /* StorifyUser.h */,
+				8C4795E913D2857600E72C6B /* StorifyUser.m */,
+				8C4795EB13D2858400E72C6B /* StorifyStory.h */,
+				8C4795EC13D2858400E72C6B /* StorifyStory.m */,
+				8C4795EE13D2859900E72C6B /* StorifyElement.h */,
+				8C4795EF13D2859900E72C6B /* StorifyElement.m */,
+			);
+			name = models;
+			sourceTree = "<group>";
+		};
+		8C4795E413D2850900E72C6B /* views */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -272,6 +311,9 @@
 				8C4795B713D284AB00E72C6B /* storiedAppDelegate.m in Sources */,
 				8C4795BD13D284AB00E72C6B /* DetailViewController.m in Sources */,
 				8C4795C313D284AB00E72C6B /* RootViewController.m in Sources */,
+				8C4795EA13D2857600E72C6B /* StorifyUser.m in Sources */,
+				8C4795ED13D2858400E72C6B /* StorifyStory.m in Sources */,
+				8C4795F013D2859900E72C6B /* StorifyElement.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
