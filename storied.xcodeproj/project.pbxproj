@@ -46,6 +46,8 @@
 		8C47966213D2AD7400E72C6B /* StoriesListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8C47966013D2AD7400E72C6B /* StoriesListViewController.xib */; };
 		8C47966613D2AD9D00E72C6B /* StoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C47966413D2AD9D00E72C6B /* StoryViewController.m */; };
 		8C47966713D2AD9D00E72C6B /* StoryViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8C47966513D2AD9D00E72C6B /* StoryViewController.xib */; };
+		8C47966A13D2BECB00E72C6B /* StoryElementTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C47966913D2BECB00E72C6B /* StoryElementTableCell.m */; };
+		8C47966D13D2BEDC00E72C6B /* StoryHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C47966C13D2BEDC00E72C6B /* StoryHeaderView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -159,6 +161,10 @@
 		8C47966313D2AD9D00E72C6B /* StoryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StoryViewController.h; sourceTree = "<group>"; };
 		8C47966413D2AD9D00E72C6B /* StoryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StoryViewController.m; sourceTree = "<group>"; };
 		8C47966513D2AD9D00E72C6B /* StoryViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StoryViewController.xib; sourceTree = "<group>"; };
+		8C47966813D2BECB00E72C6B /* StoryElementTableCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StoryElementTableCell.h; sourceTree = "<group>"; };
+		8C47966913D2BECB00E72C6B /* StoryElementTableCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StoryElementTableCell.m; sourceTree = "<group>"; };
+		8C47966B13D2BEDC00E72C6B /* StoryHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StoryHeaderView.h; sourceTree = "<group>"; };
+		8C47966C13D2BEDC00E72C6B /* StoryHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StoryHeaderView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -305,6 +311,10 @@
 		8C4795E413D2850900E72C6B /* views */ = {
 			isa = PBXGroup;
 			children = (
+				8C47966813D2BECB00E72C6B /* StoryElementTableCell.h */,
+				8C47966913D2BECB00E72C6B /* StoryElementTableCell.m */,
+				8C47966B13D2BEDC00E72C6B /* StoryHeaderView.h */,
+				8C47966C13D2BEDC00E72C6B /* StoryHeaderView.m */,
 			);
 			name = views;
 			sourceTree = "<group>";
@@ -589,6 +599,8 @@
 				8C47962213D28F3700E72C6B /* JSONKit.m in Sources */,
 				8C47966113D2AD7400E72C6B /* StoriesListViewController.m in Sources */,
 				8C47966613D2AD9D00E72C6B /* StoryViewController.m in Sources */,
+				8C47966A13D2BECB00E72C6B /* StoryElementTableCell.m in Sources */,
+				8C47966D13D2BEDC00E72C6B /* StoryHeaderView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

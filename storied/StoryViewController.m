@@ -8,11 +8,13 @@
 
 #import "StoryViewController.h"
 #import "StorifyStory.h"
+#import "StoryHeaderView.h"
 
 @implementation StoryViewController
 
 @synthesize tableView = tableView_;
 @synthesize story = story_;
+@synthesize headerView = headerView_;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -27,6 +29,7 @@
 {
     [tableView_ release], tableView_ = nil;
     [story_ release], story_ = nil;
+    [headerView_ release], headerView_ = nil;
     [super dealloc];
 }
 
@@ -34,7 +37,8 @@
     if (story != story_) {
         [story_ release];
         story_ = [story retain];
-        self.title = story.title;
+        self.title = story_.title;
+        self.headerView.story = story_;
         [self.tableView reloadData];
     }
 }
@@ -45,6 +49,7 @@
 {
     [super viewDidUnload];
     self.tableView = nil;
+    self.headerView = nil;
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
@@ -56,6 +61,18 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
+}
+
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
+    UIView *headerView = nil;
+    if (self.story) {
+        headerView = self.headerView;
+    }
+    return headerView;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
+    return self.story ? self.headerView.bounds.size.height : 0;
 }
 
 #pragma mark - UITableViewDatasource methods
