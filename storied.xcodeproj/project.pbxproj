@@ -26,6 +26,7 @@
 		8C4795EA13D2857600E72C6B /* StorifyUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C4795E913D2857600E72C6B /* StorifyUser.m */; };
 		8C4795ED13D2858400E72C6B /* StorifyStory.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C4795EC13D2858400E72C6B /* StorifyStory.m */; };
 		8C4795F013D2859900E72C6B /* StorifyElement.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C4795EF13D2859900E72C6B /* StorifyElement.m */; };
+		8C4795F313D28C3000E72C6B /* StorifyService.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C4795F213D28C3000E72C6B /* StorifyService.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -67,6 +68,8 @@
 		8C4795EC13D2858400E72C6B /* StorifyStory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StorifyStory.m; sourceTree = "<group>"; };
 		8C4795EE13D2859900E72C6B /* StorifyElement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StorifyElement.h; sourceTree = "<group>"; };
 		8C4795EF13D2859900E72C6B /* StorifyElement.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StorifyElement.m; sourceTree = "<group>"; };
+		8C4795F113D28C3000E72C6B /* StorifyService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StorifyService.h; sourceTree = "<group>"; };
+		8C4795F213D28C3000E72C6B /* StorifyService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StorifyService.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -125,6 +128,7 @@
 		8C4795AC13D284AB00E72C6B /* storied */ = {
 			isa = PBXGroup;
 			children = (
+				8C4795F413D28C3B00E72C6B /* services */,
 				8C4795E413D2850900E72C6B /* views */,
 				8C4795E313D2850100E72C6B /* models */,
 				8C4795E213D284F500E72C6B /* controllers */,
@@ -197,6 +201,15 @@
 			children = (
 			);
 			name = views;
+			sourceTree = "<group>";
+		};
+		8C4795F413D28C3B00E72C6B /* services */ = {
+			isa = PBXGroup;
+			children = (
+				8C4795F113D28C3000E72C6B /* StorifyService.h */,
+				8C4795F213D28C3000E72C6B /* StorifyService.m */,
+			);
+			name = services;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -314,6 +327,7 @@
 				8C4795EA13D2857600E72C6B /* StorifyUser.m in Sources */,
 				8C4795ED13D2858400E72C6B /* StorifyStory.m in Sources */,
 				8C4795F013D2859900E72C6B /* StorifyElement.m in Sources */,
+				8C4795F313D28C3000E72C6B /* StorifyService.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
