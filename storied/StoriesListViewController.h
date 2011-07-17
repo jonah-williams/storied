@@ -8,9 +8,15 @@
 
 #import <UIKit/UIKit.h>
 
+@class StoryViewController;
+@class StorifyService;
 
-@interface StoriesListViewController : UIViewController {
-    
+@interface StoriesListViewController : UIViewController <UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate> {
+    StorifyService *storifyService;
 }
+
+@property(nonatomic, retain) IBOutlet UITableView *tableView;
+@property(nonatomic, copy) NSArray *stories;
+@property(nonatomic, retain) StoryViewController *storyViewController;
 
 @end

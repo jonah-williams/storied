@@ -31,6 +31,8 @@
     self.storiesListViewController = [[[StoriesListViewController alloc] init] autorelease];
     self.storyViewController = [[[StoryViewController alloc] init] autorelease];
     
+    self.storiesListViewController.storyViewController = self.storyViewController;
+    
     UINavigationController *listNavController = [[[UINavigationController alloc] initWithRootViewController:self.storiesListViewController] autorelease];
     UINavigationController *detailsNavController = [[[UINavigationController alloc] initWithRootViewController:self.storyViewController] autorelease];
     self.splitViewController.viewControllers = [NSArray arrayWithObjects:listNavController, detailsNavController, nil];

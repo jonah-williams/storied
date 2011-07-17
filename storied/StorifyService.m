@@ -43,7 +43,7 @@
             NSDictionary *responseDictionary = [[request responseString] objectFromJSONString];
             NSArray *jsonStories = [responseDictionary objectForKey:@"stories"];
             NSArray *stories = [jsonStories map:^id(id obj) {
-                return [[[StorifyStory alloc] init] autorelease];
+                return [[[StorifyStory alloc] initWithJSONDictionary:obj] autorelease];
             }];
             block(stories);
         }

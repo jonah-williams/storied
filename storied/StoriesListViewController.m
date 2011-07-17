@@ -7,51 +7,83 @@
 //
 
 #import "StoriesListViewController.h"
-
+#import "StoryViewController.h"
+#import "StorifyStory.h"
+#import "StorifyService.h"
 
 @implementation StoriesListViewController
+
+@synthesize tableView = tableView_;
+@synthesize stories = stories_;
+@synthesize storyViewController = storyViewController_;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         self.title = @"Stories";
+        storifyService = [[StorifyService alloc] init];
     }
     return self;
 }
 
 - (void)dealloc
 {
+    [tableView_ release], tableView_ = nil;
+    [stories_ release], stories_ = nil;
+    [storyViewController_ release], storyViewController_ = nil;
+    [storifyService release], storifyService = nil;
     [super dealloc];
-}
-
-- (void)didReceiveMemoryWarning
-{
-    // Releases the view if it doesn't have a superview.
-    [super didReceiveMemoryWarning];
-    
-    // Release any cached data, images, etc that aren't in use.
 }
 
 #pragma mark - View lifecycle
 
-- (void)viewDidLoad
-{
-    [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
-}
-
 - (void)viewDidUnload
 {
     [super viewDidUnload];
-    // Release any retained subviews of the main view.
-    // e.g. self.myOutlet = nil;
+    self.tableView = nil;
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
-    // Return YES for supported orientations
 	return YES;
+}
+
+#pragma mark - UITableViewDelegate methods
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    StorifyStory *story = [self.stories objectAtIndex:indexPath.row];
+    self.storyViewController.story = story;
+}
+
+#pragma mark - UITableViewDatasource methods
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+    return 1;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    return [self.stories count];
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    UITableViewCell *cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:nil] autorelease];
+    StorifyStory *story = [self.stories objectAtIndex:indexPath.row];
+    cell.textLabel.text = story.title;
+    cell.detailTextLabel.text = story.description;
+    return cell;
+}
+
+#pragma mark - UISearchBarDelegate methods
+
+- (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar {
+    NSLog(@"searching for %@", searchBar.text);
+    [storifyService findStoriesByTopic:searchBar.text andInvokeBlock:^(NSArray *stories) {
+        self.stories = stories;
+        [self.tableView reloadData];
+    }];
+    [searchBar resignFirstResponder];
 }
 
 @end
