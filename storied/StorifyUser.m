@@ -19,6 +19,20 @@
 @synthesize website = website_;
 @synthesize permalink = permalink_;
 
+- (id)initWithJSONDictionary:(NSDictionary *)jsonRepresentation {
+    self = [super init];
+    if (self) {
+        self.username = [jsonRepresentation objectForKey:@"username"];
+        self.name = [jsonRepresentation objectForKey:@"name"];
+        self.avatar = [NSURL URLWithString:[jsonRepresentation objectForKey:@"avatar"]];
+        self.description = [jsonRepresentation objectForKey:@"description"];
+        self.location = [jsonRepresentation objectForKey:@"location"];
+        self.website = [NSURL URLWithString:[jsonRepresentation objectForKey:@"website"]];
+        self.permalink = [NSURL URLWithString:[jsonRepresentation objectForKey:@"permalink"]];
+    }
+    return self;
+}
+
 - (void)dealloc {
     [username_ release], username_ = nil;
     [name_ release], name_ = nil;

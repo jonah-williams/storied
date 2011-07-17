@@ -7,7 +7,7 @@
 //
 
 #import "StorifyStory.h"
-
+#import "StorifyUser.h"
 
 @implementation StorifyStory
 
@@ -22,6 +22,22 @@
 @synthesize thumbnail = thumbnail_;
 @synthesize topics = topics_;
 @synthesize elements = elements_;
+
+- (id)initWithJSONDictionary:(NSDictionary *)jsonRepresentation {
+    self = [super init];
+    if (self) {
+        self.permalink = [NSURL URLWithString:[jsonRepresentation objectForKey:@"permalink"]];
+        self.published_at = [NSDate dateWithTimeIntervalSince1970:[[jsonRepresentation objectForKey:@"permalink"] doubleValue]];
+        self.author = [[[StorifyUser alloc] initWithJSONDictionary:[jsonRepresentation objectForKey:@"author"]] autorelease];
+        self.shorturl = [NSURL URLWithString:[jsonRepresentation objectForKey:@"shorturl"]];
+        self.title = [jsonRepresentation objectForKey:@"title"];
+        self.description = [jsonRepresentation objectForKey:@"description"];
+        self.thumbnail = [NSURL URLWithString:[jsonRepresentation objectForKey:@"thumbnail"]];
+        self.topics = [jsonRepresentation objectForKey:@"topics"];
+    }
+    return self;
+
+}
 
 - (void)dealloc {
     [permalink_ release], permalink_ = nil;

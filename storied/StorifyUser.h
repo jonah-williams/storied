@@ -21,4 +21,6 @@
 @property(nonatomic, copy) NSURL *website;
 @property(nonatomic, copy) NSURL *permalink;
 
+- (id)initWithJSONDictionary:(NSDictionary *)jsonRepresentation;
+
 @end

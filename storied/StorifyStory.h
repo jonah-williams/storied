@@ -25,4 +25,6 @@
 @property(nonatomic, copy) NSArray *topics;
 @property(nonatomic, copy) NSArray *elements;
 
+- (id)initWithJSONDictionary:(NSDictionary *)jsonRepresentation;
+
 @end

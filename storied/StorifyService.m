@@ -9,6 +9,8 @@
 #import "StorifyService.h"
 #import "ASIHTTPRequest.h"
 #import "JSONKit.h"
+#import "BlocksKit/BlocksKit.h"
+#import "StorifyStory.h"
 
 @implementation StorifyService
 
@@ -39,6 +41,11 @@
         NSLog(@"request for %@ succeeded with response: %@ | %@", urlString, request.responseStatusMessage, [request responseString]);
         if (request.responseStatusCode == 200) {
             NSDictionary *responseDictionary = [[request responseString] objectFromJSONString];
+            NSArray *jsonStories = [responseDictionary objectForKey:@"stories"];
+            NSArray *stories = [jsonStories map:^id(id obj) {
+                return [[[StorifyStory alloc] init] autorelease];
+            }];
+            block(stories);
         }
     }];
     [self.operationQueue addOperation:request];

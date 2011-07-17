@@ -42,6 +42,9 @@
 		8C47961F13D28EEC00E72C6B /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8C47961B13D28EEC00E72C6B /* SystemConfiguration.framework */; };
 		8C47962213D28F3700E72C6B /* JSONKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C47962113D28F3700E72C6B /* JSONKit.m */; };
 		8C47962913D2901000E72C6B /* StorifyServiceTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C47962813D2901000E72C6B /* StorifyServiceTest.m */; };
+		8C47965913D29B0800E72C6B /* libBlocksKit.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8C47965813D29B0800E72C6B /* libBlocksKit.a */; };
+		8C47965B13D29DE400E72C6B /* StorifyStoryTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C47965A13D29DE400E72C6B /* StorifyStoryTest.m */; };
+		8C47965D13D2A95800E72C6B /* StorifyUserTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C47965C13D2A95800E72C6B /* StorifyUserTest.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +54,41 @@
 			proxyType = 1;
 			remoteGlobalIDString = 8C4795A113D284AB00E72C6B;
 			remoteInfo = storied;
+		};
+		8C47964E13D29AC900E72C6B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 8C47964313D29AC800E72C6B /* BlocksKit.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 6C3DBF8D1382F1BA00E6C9AA;
+			remoteInfo = BlocksKit;
+		};
+		8C47965013D29AC900E72C6B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 8C47964313D29AC800E72C6B /* BlocksKit.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 6CC08FCE1385555D00DDEABB;
+			remoteInfo = "BlocksKit Mac";
+		};
+		8C47965213D29AC900E72C6B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 8C47964313D29AC800E72C6B /* BlocksKit.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 6CC0900913855CAE00DDEABB;
+			remoteInfo = "BlocksKit Chameleon";
+		};
+		8C47965413D29AC900E72C6B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 8C47964313D29AC800E72C6B /* BlocksKit.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 60FF000713C023CB004A1394;
+			remoteInfo = Tests;
+		};
+		8C47965613D29B0100E72C6B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 8C47964313D29AC800E72C6B /* BlocksKit.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 6C3DBF8C1382F1BA00E6C9AA;
+			remoteInfo = BlocksKit;
 		};
 /* End PBXContainerItemProxy section */
 
@@ -115,6 +153,10 @@
 		8C47962013D28F3700E72C6B /* JSONKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JSONKit.h; path = vendor/JSONKit/JSONKit.h; sourceTree = "<group>"; };
 		8C47962113D28F3700E72C6B /* JSONKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JSONKit.m; path = vendor/JSONKit/JSONKit.m; sourceTree = "<group>"; };
 		8C47962813D2901000E72C6B /* StorifyServiceTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StorifyServiceTest.m; sourceTree = "<group>"; };
+		8C47964313D29AC800E72C6B /* BlocksKit.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = BlocksKit.xcodeproj; path = vendor/BlocksKit/BlocksKit.xcodeproj; sourceTree = "<group>"; };
+		8C47965813D29B0800E72C6B /* libBlocksKit.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libBlocksKit.a; sourceTree = SOURCE_ROOT; };
+		8C47965A13D29DE400E72C6B /* StorifyStoryTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StorifyStoryTest.m; sourceTree = "<group>"; };
+		8C47965C13D2A95800E72C6B /* StorifyUserTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StorifyUserTest.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -122,6 +164,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8C47965913D29B0800E72C6B /* libBlocksKit.a in Frameworks */,
 				8C47961C13D28EEC00E72C6B /* CFNetwork.framework in Frameworks */,
 				8C4795AB13D284AB00E72C6B /* CoreGraphics.framework in Frameworks */,
 				8C47961D13D28EEC00E72C6B /* libz.1.2.3.dylib in Frameworks */,
@@ -168,6 +211,7 @@
 		8C4795A513D284AB00E72C6B /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				8C47965813D29B0800E72C6B /* libBlocksKit.a */,
 				8C47961713D28EEC00E72C6B /* CFNetwork.framework */,
 				8C47961813D28EEC00E72C6B /* CoreGraphics.framework */,
 				8C47961913D28EEC00E72C6B /* libz.1.2.3.dylib */,
@@ -274,6 +318,7 @@
 		8C4795F513D28E0C00E72C6B /* vendor */ = {
 			isa = PBXGroup;
 			children = (
+				8C47964213D29AB800E72C6B /* BlocksKit */,
 				8C47962313D28F3E00E72C6B /* JSONKit */,
 				8C47961213D28E8500E72C6B /* asi-http-request */,
 			);
@@ -336,6 +381,8 @@
 		8C47962513D28FE100E72C6B /* models */ = {
 			isa = PBXGroup;
 			children = (
+				8C47965A13D29DE400E72C6B /* StorifyStoryTest.m */,
+				8C47965C13D2A95800E72C6B /* StorifyUserTest.m */,
 			);
 			name = models;
 			sourceTree = "<group>";
@@ -355,6 +402,25 @@
 			name = views;
 			sourceTree = "<group>";
 		};
+		8C47964213D29AB800E72C6B /* BlocksKit */ = {
+			isa = PBXGroup;
+			children = (
+				8C47964313D29AC800E72C6B /* BlocksKit.xcodeproj */,
+			);
+			name = BlocksKit;
+			sourceTree = "<group>";
+		};
+		8C47964413D29AC800E72C6B /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				8C47964F13D29AC900E72C6B /* libBlocksKit.a */,
+				8C47965113D29AC900E72C6B /* BlocksKit.dylib */,
+				8C47965313D29AC900E72C6B /* BlocksKit_Chameleon.dylib */,
+				8C47965513D29AC900E72C6B /* Tests.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -369,6 +435,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				8C47965713D29B0100E72C6B /* PBXTargetDependency */,
 			);
 			name = storied;
 			productName = storied;
@@ -412,6 +479,12 @@
 			mainGroup = 8C47959713D284AB00E72C6B;
 			productRefGroup = 8C4795A313D284AB00E72C6B /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 8C47964413D29AC800E72C6B /* Products */;
+					ProjectRef = 8C47964313D29AC800E72C6B /* BlocksKit.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				8C4795A113D284AB00E72C6B /* storied */,
@@ -419,6 +492,37 @@
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		8C47964F13D29AC900E72C6B /* libBlocksKit.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libBlocksKit.a;
+			remoteRef = 8C47964E13D29AC900E72C6B /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		8C47965113D29AC900E72C6B /* BlocksKit.dylib */ = {
+			isa = PBXReferenceProxy;
+			fileType = "compiled.mach-o.dylib";
+			path = BlocksKit.dylib;
+			remoteRef = 8C47965013D29AC900E72C6B /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		8C47965313D29AC900E72C6B /* BlocksKit_Chameleon.dylib */ = {
+			isa = PBXReferenceProxy;
+			fileType = "compiled.mach-o.dylib";
+			path = BlocksKit_Chameleon.dylib;
+			remoteRef = 8C47965213D29AC900E72C6B /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		8C47965513D29AC900E72C6B /* Tests.app */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.application;
+			path = Tests.app;
+			remoteRef = 8C47965413D29AC900E72C6B /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		8C4795A013D284AB00E72C6B /* Resources */ = {
@@ -490,6 +594,8 @@
 			files = (
 				8C4795D913D284AB00E72C6B /* storiedTests.m in Sources */,
 				8C47962913D2901000E72C6B /* StorifyServiceTest.m in Sources */,
+				8C47965B13D29DE400E72C6B /* StorifyStoryTest.m in Sources */,
+				8C47965D13D2A95800E72C6B /* StorifyUserTest.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -500,6 +606,11 @@
 			isa = PBXTargetDependency;
 			target = 8C4795A113D284AB00E72C6B /* storied */;
 			targetProxy = 8C4795CD13D284AB00E72C6B /* PBXContainerItemProxy */;
+		};
+		8C47965713D29B0100E72C6B /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = BlocksKit;
+			targetProxy = 8C47965613D29B0100E72C6B /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -581,7 +692,16 @@
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "storied/storied-Prefix.pch";
+				HEADER_SEARCH_PATHS = "$(BUILT_PRODUCTS_DIR)/**";
 				INFOPLIST_FILE = "storied/storied-Info.plist";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)\"",
+				);
+				OTHER_LDFLAGS = (
+					"-ObjC",
+					"-all_load",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -594,7 +714,16 @@
 				COPY_PHASE_STRIP = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "storied/storied-Prefix.pch";
+				HEADER_SEARCH_PATHS = "$(BUILT_PRODUCTS_DIR)/**";
 				INFOPLIST_FILE = "storied/storied-Info.plist";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)\"",
+				);
+				OTHER_LDFLAGS = (
+					"-ObjC",
+					"-all_load",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				VALIDATE_PRODUCT = YES;
 				WRAPPER_EXTENSION = app;

@@ -4,3 +4,6 @@
 [submodule "vendor/JSONKit"]
 	path = vendor/JSONKit
 	url = https://github.com/johnezang/JSONKit.git
+[submodule "vendor/BlocksKit"]
+	path = vendor/BlocksKit
+	url = https://github.com/zwaldowski/BlocksKit.git
