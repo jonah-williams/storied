@@ -11,6 +11,7 @@
 #import "JSONKit.h"
 #import "BlocksKit/BlocksKit.h"
 #import "StorifyStory.h"
+#import "StorifyUser.h"
 
 @implementation StorifyService
 
@@ -30,7 +31,7 @@
 }
 
 //GET storify.com/topics/:hashtag.json[?callback=:callback]
-- (void)findStoriesByTopic:(NSString *)topic andInvokeBlock:(StoryResultsBlock)block {
+- (void)findStoriesByTopic:(NSString *)topic andInvokeBlock:(StoriesResultsBlock)block {
     NSString *urlString = [NSString stringWithFormat:@"http://storify.com/topics/%@.json", [topic stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
     NSURL *url = [NSURL URLWithString:urlString];
     ASIHTTPRequest *request = [ASIHTTPRequest requestWithURL:url];
@@ -51,8 +52,26 @@
     [self.operationQueue addOperation:request];
 }
 
-//GET storify.com/:username.:format[?callback=:callback]
 //GET storify.com/:authorUsername/title.:format[?callback=:callback]
+- (void)getStoryDetailsForStory:(StorifyStory *)story andInvokeBlock:(StoryResultsBlock)block {
+    NSString *urlString = [NSString stringWithFormat:@"%@.json", story.permalink];
+    NSURL *url = [NSURL URLWithString:urlString];
+    ASIHTTPRequest *request = [ASIHTTPRequest requestWithURL:url];
+    [request setFailedBlock:^(void) {
+        NSLog(@"request for %@ failed with response: %@ | %@", urlString, request.responseStatusMessage, [request responseString]);
+    }];
+    [request setCompletionBlock:^(void) {
+        NSLog(@"request for %@ succeeded with response: %@ | %@", urlString, request.responseStatusMessage, [request responseString]);
+        if (request.responseStatusCode == 200) {
+            NSDictionary *responseDictionary = [[request responseString] objectFromJSONString];
+            StorifyStory *updatedStory = [[[StorifyStory alloc] initWithJSONDictionary:responseDictionary] autorelease];
+            block(updatedStory);
+        }
+    }];
+    [self.operationQueue addOperation:request];
+}
+
+//GET storify.com/:username.:format[?callback=:callback]
 //POST storify.com/story/new
 //POST :storyURL/elements/add
 //POST storify.com/:authorUsername/:title/publish

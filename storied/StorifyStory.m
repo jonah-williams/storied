@@ -8,9 +8,10 @@
 
 #import "StorifyStory.h"
 #import "StorifyUser.h"
+#import "StorifyElement.h"
+#import "BlocksKit/BlocksKit.h"
 
 @implementation StorifyStory
-
 
 @synthesize permalink = permalink_;
 @synthesize published_at = published_at_;
@@ -27,16 +28,24 @@
     self = [super init];
     if (self) {
         self.permalink = [NSURL URLWithString:[jsonRepresentation objectForKey:@"permalink"]];
-        self.published_at = [NSDate dateWithTimeIntervalSince1970:[[jsonRepresentation objectForKey:@"permalink"] doubleValue]];
+        self.published_at = [NSDate dateWithTimeIntervalSince1970:[[jsonRepresentation objectForKey:@"published_at"] doubleValue]];
         self.author = [[[StorifyUser alloc] initWithJSONDictionary:[jsonRepresentation objectForKey:@"author"]] autorelease];
         self.shorturl = [NSURL URLWithString:[jsonRepresentation objectForKey:@"shorturl"]];
         self.title = [jsonRepresentation objectForKey:@"title"];
         self.description = [jsonRepresentation objectForKey:@"description"];
         self.thumbnail = [NSURL URLWithString:[jsonRepresentation objectForKey:@"thumbnail"]];
         self.topics = [jsonRepresentation objectForKey:@"topics"];
+        NSDictionary *elementsDictionary = [jsonRepresentation objectForKey:@"elements"];
+        NSUInteger elementCount = [[elementsDictionary allKeys] count];
+        NSMutableArray *elements = [NSMutableArray arrayWithCapacity:elementCount];
+        for (NSUInteger count = 0; count < elementCount; count++) {
+            NSDictionary *elementDictionary = [elementsDictionary objectForKey:[[NSNumber numberWithUnsignedInteger:count] stringValue]];
+            [elements addObject:[[[StorifyElement alloc] initWithJSONDictionary:elementDictionary] autorelease]];
+        }
+        self.elements = elements;
+        NSLog(@"story created with %d elements", [self.elements count]);
     }
     return self;
-
 }
 
 - (void)dealloc {

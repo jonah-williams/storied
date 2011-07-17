@@ -68,7 +68,10 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:nil] autorelease];
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"StoryCell"];
+    if (cell == nil) {
+        cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:nil] autorelease];
+    }
     StorifyStory *story = [self.stories objectAtIndex:indexPath.row];
     cell.textLabel.text = story.title;
     cell.detailTextLabel.text = story.description;

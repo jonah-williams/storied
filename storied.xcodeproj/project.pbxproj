@@ -48,6 +48,8 @@
 		8C47966713D2AD9D00E72C6B /* StoryViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8C47966513D2AD9D00E72C6B /* StoryViewController.xib */; };
 		8C47966A13D2BECB00E72C6B /* StoryElementTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C47966913D2BECB00E72C6B /* StoryElementTableCell.m */; };
 		8C47966D13D2BEDC00E72C6B /* StoryHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C47966C13D2BEDC00E72C6B /* StoryHeaderView.m */; };
+		8C47966F13D2C62700E72C6B /* StorifyElementTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C47966E13D2C62700E72C6B /* StorifyElementTest.m */; };
+		8C47967113D2CB6A00E72C6B /* StoryElementCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8C47967013D2CB6A00E72C6B /* StoryElementCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -165,6 +167,8 @@
 		8C47966913D2BECB00E72C6B /* StoryElementTableCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StoryElementTableCell.m; sourceTree = "<group>"; };
 		8C47966B13D2BEDC00E72C6B /* StoryHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StoryHeaderView.h; sourceTree = "<group>"; };
 		8C47966C13D2BEDC00E72C6B /* StoryHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StoryHeaderView.m; sourceTree = "<group>"; };
+		8C47966E13D2C62700E72C6B /* StorifyElementTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StorifyElementTest.m; sourceTree = "<group>"; };
+		8C47967013D2CB6A00E72C6B /* StoryElementCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StoryElementCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -315,6 +319,7 @@
 				8C47966913D2BECB00E72C6B /* StoryElementTableCell.m */,
 				8C47966B13D2BEDC00E72C6B /* StoryHeaderView.h */,
 				8C47966C13D2BEDC00E72C6B /* StoryHeaderView.m */,
+				8C47967013D2CB6A00E72C6B /* StoryElementCell.xib */,
 			);
 			name = views;
 			sourceTree = "<group>";
@@ -396,6 +401,7 @@
 			children = (
 				8C47965A13D29DE400E72C6B /* StorifyStoryTest.m */,
 				8C47965C13D2A95800E72C6B /* StorifyUserTest.m */,
+				8C47966E13D2C62700E72C6B /* StorifyElementTest.m */,
 			);
 			name = models;
 			sourceTree = "<group>";
@@ -546,6 +552,7 @@
 				8C4795BA13D284AB00E72C6B /* MainWindow.xib in Resources */,
 				8C47966213D2AD7400E72C6B /* StoriesListViewController.xib in Resources */,
 				8C47966713D2AD9D00E72C6B /* StoryViewController.xib in Resources */,
+				8C47967113D2CB6A00E72C6B /* StoryElementCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -612,6 +619,7 @@
 				8C47962913D2901000E72C6B /* StorifyServiceTest.m in Sources */,
 				8C47965B13D29DE400E72C6B /* StorifyStoryTest.m in Sources */,
 				8C47965D13D2A95800E72C6B /* StorifyUserTest.m in Sources */,
+				8C47966F13D2C62700E72C6B /* StorifyElementTest.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -23,9 +23,11 @@
 @property(nonatomic, copy) NSString *description;
 @property(nonatomic, copy) NSURL *thumbnail;
 @property(nonatomic, copy) NSURL *favicon;
-@property(nonatomic, copy) StorifyUser *author;
+@property(nonatomic, retain) StorifyUser *author;
 @property(nonatomic, copy) NSDate *created_at;
 @property(nonatomic, copy) NSDate *added_at;
 @property(nonatomic, copy) NSString *oembed;
+
+- (id)initWithJSONDictionary:(NSDictionary *)jsonRepresentation;
 
 @end

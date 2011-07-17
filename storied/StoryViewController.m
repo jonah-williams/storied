@@ -9,18 +9,21 @@
 #import "StoryViewController.h"
 #import "StorifyStory.h"
 #import "StoryHeaderView.h"
+#import "StoryElementTableCell.h"
+#import "StorifyService.h"
 
 @implementation StoryViewController
 
 @synthesize tableView = tableView_;
 @synthesize story = story_;
 @synthesize headerView = headerView_;
+@synthesize storyElementCellNib = storyElementCellNib_;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        // Custom initialization
+        storifyService = [[StorifyService alloc] init];
     }
     return self;
 }
@@ -30,26 +33,38 @@
     [tableView_ release], tableView_ = nil;
     [story_ release], story_ = nil;
     [headerView_ release], headerView_ = nil;
+    [storyElementCellNib_ release], storyElementCellNib_ = nil;
     [super dealloc];
 }
 
 - (void)setStory:(StorifyStory *)story {
     if (story != story_) {
+        [storifyService.operationQueue cancelAllOperations];
         [story_ release];
         story_ = [story retain];
         self.title = story_.title;
         self.headerView.story = story_;
         [self.tableView reloadData];
+        [storifyService getStoryDetailsForStory:story_ andInvokeBlock:^(StorifyStory *updatedStory) {
+            story_.elements = updatedStory.elements;
+            [self.tableView reloadData];
+        }];
     }
 }
 
 #pragma mark - View lifecycle
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    self.storyElementCellNib = [UINib nibWithNibName:@"StoryElementCell" bundle:nil];
+}
 
 - (void)viewDidUnload
 {
     [super viewDidUnload];
     self.tableView = nil;
     self.headerView = nil;
+    self.storyElementCellNib = nil;
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
@@ -60,7 +75,7 @@
 #pragma mark - UITableViewDelegate methods
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
@@ -82,11 +97,16 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 0;
+    return [self.story.elements count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return nil;
+    StoryElementTableCell *cell = (StoryElementTableCell *)[tableView dequeueReusableCellWithIdentifier:@"StoryElementTableCell"];
+    if (cell == nil) {
+        cell = [[self.storyElementCellNib instantiateWithOwner:nil options:nil] objectAtIndex:0];
+    }
+    cell.element = [self.story.elements objectAtIndex:indexPath.row];
+    return cell;
 }
 
 

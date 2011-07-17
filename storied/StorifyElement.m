@@ -7,7 +7,7 @@
 //
 
 #import "StorifyElement.h"
-
+#import "StorifyUser.h"
 
 @implementation StorifyElement
 
@@ -24,6 +24,23 @@
 @synthesize created_at = created_at_;
 @synthesize added_at = added_at_;
 @synthesize oembed = oembed_;
+
+- (id)initWithJSONDictionary:(NSDictionary *)jsonRepresentation {
+    self = [super init];
+    if (self) {
+        self.source = [jsonRepresentation objectForKey:@"source"];
+        self.image = [NSURL URLWithString:[[jsonRepresentation objectForKey:@"image"] objectForKey:@"href"]];
+        self.elementClass = [jsonRepresentation objectForKey:@"elementClass"];
+        self.permalink = [NSURL URLWithString:[jsonRepresentation objectForKey:@"permalink"]];
+        self.title = [jsonRepresentation objectForKey:@"title"];
+        self.description = [jsonRepresentation objectForKey:@"description"];
+        self.thumbnail = [NSURL URLWithString:[jsonRepresentation objectForKey:@"thumbnail"]];
+        self.author = [[[StorifyUser alloc] initWithJSONDictionary:[jsonRepresentation objectForKey:@"author"]] autorelease];
+        self.created_at = [NSDate dateWithTimeIntervalSince1970:[[jsonRepresentation objectForKey:@"created_at"] doubleValue]];
+        self.added_at = [NSDate dateWithTimeIntervalSince1970:[[jsonRepresentation objectForKey:@"added_at"] doubleValue]];
+    }
+    return self;
+}
 
 - (void)dealloc {
     [curator_ release], curator_ = nil;

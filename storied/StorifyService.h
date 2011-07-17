@@ -8,7 +8,10 @@
 
 #import <Foundation/Foundation.h>
 
-typedef void (^StoryResultsBlock)(NSArray *stories);
+@class StorifyStory;
+
+typedef void (^StoriesResultsBlock)(NSArray *stories);
+typedef void (^StoryResultsBlock)(StorifyStory *story);
 
 @interface StorifyService : NSObject {
     
@@ -16,6 +19,7 @@ typedef void (^StoryResultsBlock)(NSArray *stories);
 
 @property (nonatomic, retain) NSOperationQueue *operationQueue;
 
-- (void)findStoriesByTopic:(NSString *)topic andInvokeBlock:(StoryResultsBlock)block;
+- (void)findStoriesByTopic:(NSString *)topic andInvokeBlock:(StoriesResultsBlock)block;
+- (void)getStoryDetailsForStory:(StorifyStory *)story andInvokeBlock:(StoryResultsBlock)block;
 
 @end

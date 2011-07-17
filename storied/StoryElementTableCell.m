@@ -7,29 +7,42 @@
 //
 
 #import "StoryElementTableCell.h"
-
+#import "StorifyElement.h"
+#import "StorifyUser.h"
 
 @implementation StoryElementTableCell
 
-- (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
-{
-    self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
-    if (self) {
-        // Initialization code
-    }
-    return self;
-}
-
-- (void)setSelected:(BOOL)selected animated:(BOOL)animated
-{
-    [super setSelected:selected animated:animated];
-
-    // Configure the view for the selected state
-}
+@synthesize titleLabel = titleLabel_;
+@synthesize descriptionLabel = descriptionLabel_;
+@synthesize authorLabel = authorLabel_;
+@synthesize createdAtLabel = createdAtLabel_;
+@synthesize imageView = imageView_;
+@synthesize element = element_;
 
 - (void)dealloc
 {
+    [titleLabel_ release], titleLabel_ = nil;
+    [descriptionLabel_ release], descriptionLabel_ = nil;
+    [authorLabel_ release], authorLabel_ = nil;
+    [createdAtLabel_ release], createdAtLabel_ = nil;
+    [imageView_ release], imageView_ = nil;
+    [element_ release], element_ = nil;
     [super dealloc];
+}
+
+- (void)setElement:(StorifyElement *)element {
+    if (element_ != element) {
+        [element_ release];
+        element_ = [element retain];
+        self.titleLabel.text = element_.title;
+        self.descriptionLabel.text = element_.description;
+        StorifyUser *author = element_.author;
+        self.authorLabel.text = author.name;
+        NSDateFormatter *dateFormatter = [[[NSDateFormatter alloc] init] autorelease];
+        [dateFormatter setDateStyle:NSDateFormatterFullStyle];
+        [dateFormatter setTimeStyle:NSDateFormatterMediumStyle];
+        self.createdAtLabel.text = [dateFormatter stringFromDate:element_.created_at];
+    }
 }
 
 @end
