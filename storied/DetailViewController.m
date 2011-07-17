@@ -10,6 +10,9 @@
 
 #import "RootViewController.h"
 
+#import "StorifyService.h"
+#import "JSONKit.h"
+
 @interface DetailViewController ()
 @property (nonatomic, retain) UIPopoverController *popoverController;
 - (void)configureView;
@@ -24,6 +27,8 @@
 @synthesize detailDescriptionLabel=_detailDescriptionLabel;
 
 @synthesize popoverController=_myPopoverController;
+
+@synthesize topicField = topicField_;
 
 #pragma mark - Managing the detail item
 
@@ -125,12 +130,20 @@
 	// Release any cached data, images, etc that aren't in use.
 }
 
+- (IBAction)searchForTopic {
+    StorifyService *storyService = [[[StorifyService alloc] init] autorelease];
+    [storyService findStoriesByTopic:self.topicField.text andInvokeBlock:^(NSArray *stories) {
+        NSLog(@"got %d stories: %@", [stories count], stories);
+    }];
+}
+
 - (void)dealloc
 {
     [_myPopoverController release];
     [_toolbar release];
     [_detailItem release];
     [_detailDescriptionLabel release];
+    [topicField_ release], topicField_ = nil;
     [super dealloc];
 }
 

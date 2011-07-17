@@ -41,6 +41,7 @@
 		8C47961E13D28EEC00E72C6B /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8C47961A13D28EEC00E72C6B /* MobileCoreServices.framework */; };
 		8C47961F13D28EEC00E72C6B /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8C47961B13D28EEC00E72C6B /* SystemConfiguration.framework */; };
 		8C47962213D28F3700E72C6B /* JSONKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C47962113D28F3700E72C6B /* JSONKit.m */; };
+		8C47962913D2901000E72C6B /* StorifyServiceTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C47962813D2901000E72C6B /* StorifyServiceTest.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -113,6 +114,7 @@
 		8C47961B13D28EEC00E72C6B /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		8C47962013D28F3700E72C6B /* JSONKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JSONKit.h; path = vendor/JSONKit/JSONKit.h; sourceTree = "<group>"; };
 		8C47962113D28F3700E72C6B /* JSONKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JSONKit.m; path = vendor/JSONKit/JSONKit.m; sourceTree = "<group>"; };
+		8C47962813D2901000E72C6B /* StorifyServiceTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StorifyServiceTest.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -181,10 +183,10 @@
 		8C4795AC13D284AB00E72C6B /* storied */ = {
 			isa = PBXGroup;
 			children = (
+				8C4795E213D284F500E72C6B /* controllers */,
+				8C4795E313D2850100E72C6B /* models */,
 				8C4795F413D28C3B00E72C6B /* services */,
 				8C4795E413D2850900E72C6B /* views */,
-				8C4795E313D2850100E72C6B /* models */,
-				8C4795E213D284F500E72C6B /* controllers */,
 				8C4795B513D284AB00E72C6B /* storiedAppDelegate.h */,
 				8C4795B613D284AB00E72C6B /* storiedAppDelegate.m */,
 				8C4795B813D284AB00E72C6B /* MainWindow.xib */,
@@ -208,6 +210,10 @@
 		8C4795CF13D284AB00E72C6B /* storiedTests */ = {
 			isa = PBXGroup;
 			children = (
+				8C47962413D28FD900E72C6B /* controllers */,
+				8C47962513D28FE100E72C6B /* models */,
+				8C47962613D28FE500E72C6B /* services */,
+				8C47962713D28FEA00E72C6B /* views */,
 				8C4795D613D284AB00E72C6B /* storiedTests.h */,
 				8C4795D813D284AB00E72C6B /* storiedTests.m */,
 				8C4795D013D284AB00E72C6B /* Supporting Files */,
@@ -318,6 +324,35 @@
 				8C47962113D28F3700E72C6B /* JSONKit.m */,
 			);
 			name = JSONKit;
+			sourceTree = "<group>";
+		};
+		8C47962413D28FD900E72C6B /* controllers */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = controllers;
+			sourceTree = "<group>";
+		};
+		8C47962513D28FE100E72C6B /* models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = models;
+			sourceTree = "<group>";
+		};
+		8C47962613D28FE500E72C6B /* services */ = {
+			isa = PBXGroup;
+			children = (
+				8C47962813D2901000E72C6B /* StorifyServiceTest.m */,
+			);
+			name = services;
+			sourceTree = "<group>";
+		};
+		8C47962713D28FEA00E72C6B /* views */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -454,6 +489,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8C4795D913D284AB00E72C6B /* storiedTests.m in Sources */,
+				8C47962913D2901000E72C6B /* StorifyServiceTest.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

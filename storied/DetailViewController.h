@@ -19,4 +19,8 @@
 
 @property (nonatomic, retain) IBOutlet UILabel *detailDescriptionLabel;
 
+@property (nonatomic, retain) IBOutlet UITextField *topicField;
+
+- (IBAction)searchForTopic;
+
 @end
