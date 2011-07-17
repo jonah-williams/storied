@@ -26,5 +26,11 @@
 @property(nonatomic, copy) NSArray *elements;
 
 - (id)initWithJSONDictionary:(NSDictionary *)jsonRepresentation;
+- (NSDictionary *)dictionaryRepresentation;
+- (NSString *)storagePath;
+- (void)createStoryRepository;
+- (void)saveStoryHistory;
+- (void)saveStory;
+- (void)commitFileAtPath:(NSString *)relativeFilePath inRepositoryAtPath:(NSString *)pathToGitDir;
 
 @end

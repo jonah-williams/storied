@@ -29,7 +29,7 @@
     self = [super init];
     if (self) {
         self.source = [jsonRepresentation objectForKey:@"source"];
-        self.image = [NSURL URLWithString:[[jsonRepresentation objectForKey:@"image"] objectForKey:@"href"]];
+//        self.image = [NSURL URLWithString:[[jsonRepresentation objectForKey:@"image"] objectForKey:@"href"]];
         self.elementClass = [jsonRepresentation objectForKey:@"elementClass"];
         self.permalink = [NSURL URLWithString:[jsonRepresentation objectForKey:@"permalink"]];
         self.title = [jsonRepresentation objectForKey:@"title"];
@@ -57,6 +57,20 @@
     [added_at_ release], added_at_ = nil;
     [oembed_ release], oembed_ = nil;
     [super dealloc];
+}
+
+- (NSDictionary *)dictionaryRepresentation {
+    NSMutableDictionary *dictionary = [NSMutableDictionary dictionary];
+    [dictionary setObject:self.source forKey:@"source"];
+    [dictionary setObject:self.elementClass forKey:@"elementClass"];
+    [dictionary setObject:[self.permalink absoluteString] forKey:@"permalink"];
+    [dictionary setObject:self.title forKey:@"title"];
+    [dictionary setObject:self.description forKey:@"description"];
+    [dictionary setObject:[self.thumbnail absoluteString] forKey:@"thumbnail"];
+    [dictionary setObject:[self.author dictionaryRepresentation] forKey:@"author"];
+    [dictionary setObject:[[NSNumber numberWithDouble:[self.created_at timeIntervalSince1970]] stringValue] forKey:@"created_at"];
+    [dictionary setObject:[[NSNumber numberWithDouble:[self.added_at timeIntervalSince1970]] stringValue] forKey:@"added_at"];
+    return dictionary;
 }
 
 @end

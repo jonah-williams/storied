@@ -29,5 +29,6 @@
 @property(nonatomic, copy) NSString *oembed;
 
 - (id)initWithJSONDictionary:(NSDictionary *)jsonRepresentation;
+- (NSDictionary *)dictionaryRepresentation;
 
 @end

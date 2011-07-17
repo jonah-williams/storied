@@ -44,4 +44,16 @@
     [super dealloc];
 }
 
+- (NSDictionary *)dictionaryRepresentation {
+    NSMutableDictionary *dictionary = [NSMutableDictionary dictionary];
+    [dictionary setObject:self.username forKey:@"username"];
+    [dictionary setObject:self.name forKey:@"name"];
+    [dictionary setObject:[self.avatar absoluteString] forKey:@"avatar"];
+    [dictionary setObject:self.description forKey:@"description"];
+    [dictionary setObject:self.location forKey:@"location"];
+    [dictionary setObject:[self.website absoluteString] forKey:@"website"];
+    [dictionary setObject:[self.permalink absoluteString] forKey:@"permalink"];
+    return dictionary;
+}
+
 @end
