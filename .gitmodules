@@ -7,3 +7,6 @@
 [submodule "vendor/BlocksKit"]
 	path = vendor/BlocksKit
 	url = https://github.com/zwaldowski/BlocksKit.git
+[submodule "vendor/objective-git"]
+	path = vendor/objective-git
+	url = https://github.com/libgit2/objective-git.git
