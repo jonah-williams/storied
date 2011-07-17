@@ -22,13 +22,21 @@
 - (id)initWithJSONDictionary:(NSDictionary *)jsonRepresentation {
     self = [super init];
     if (self) {
-        self.username = [jsonRepresentation objectForKey:@"username"];
-        self.name = [jsonRepresentation objectForKey:@"name"];
-        self.avatar = [NSURL URLWithString:[jsonRepresentation objectForKey:@"avatar"]];
-        self.description = [jsonRepresentation objectForKey:@"description"];
-        self.location = [jsonRepresentation objectForKey:@"location"];
-        self.website = [NSURL URLWithString:[jsonRepresentation objectForKey:@"website"]];
-        self.permalink = [NSURL URLWithString:[jsonRepresentation objectForKey:@"permalink"]];
+        NSMutableDictionary *jsonDictionary = [NSMutableDictionary dictionary];
+        NSArray *jsonDictionaryKeys = [jsonRepresentation allKeys];
+        for (id key in jsonDictionaryKeys) {
+            if ([NSNull null] != [jsonRepresentation objectForKey:key]) {
+                [jsonDictionary setObject:[jsonRepresentation objectForKey:key] forKey:key];
+            }
+        }
+        
+        self.username = [jsonDictionary objectForKey:@"username"];
+        self.name = [jsonDictionary objectForKey:@"name"];
+        self.avatar = [NSURL URLWithString:[jsonDictionary objectForKey:@"avatar"]];
+        self.description = [jsonDictionary objectForKey:@"description"];
+        self.location = [jsonDictionary objectForKey:@"location"];
+        self.website = [NSURL URLWithString:[jsonDictionary objectForKey:@"website"]];
+        self.permalink = [NSURL URLWithString:[jsonDictionary objectForKey:@"permalink"]];
     }
     return self;
 }
@@ -46,13 +54,13 @@
 
 - (NSDictionary *)dictionaryRepresentation {
     NSMutableDictionary *dictionary = [NSMutableDictionary dictionary];
-    [dictionary setObject:self.username forKey:@"username"];
-    [dictionary setObject:self.name forKey:@"name"];
-    [dictionary setObject:[self.avatar absoluteString] forKey:@"avatar"];
-    [dictionary setObject:self.description forKey:@"description"];
-    [dictionary setObject:self.location forKey:@"location"];
-    [dictionary setObject:[self.website absoluteString] forKey:@"website"];
-    [dictionary setObject:[self.permalink absoluteString] forKey:@"permalink"];
+    if (self.username != nil) {    [dictionary setObject:self.username forKey:@"username"];}
+    if (self.name != nil) {    [dictionary setObject:self.name forKey:@"name"];}
+    if (self.avatar != nil) {    [dictionary setObject:[self.avatar absoluteString] forKey:@"avatar"];}
+    if (self.description != nil) {    [dictionary setObject:self.description forKey:@"description"];}
+    if (self.location != nil) {    [dictionary setObject:self.location forKey:@"location"];}
+    if (self.website != nil) {    [dictionary setObject:[self.website absoluteString] forKey:@"website"];}
+    if (self.permalink != nil) {    [dictionary setObject:[self.permalink absoluteString] forKey:@"permalink"];}
     return dictionary;
 }
 

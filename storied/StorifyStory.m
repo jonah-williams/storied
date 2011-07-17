@@ -28,15 +28,23 @@
 - (id)initWithJSONDictionary:(NSDictionary *)jsonRepresentation {
     self = [super init];
     if (self) {
-        self.permalink = [NSURL URLWithString:[jsonRepresentation objectForKey:@"permalink"]];
-        self.published_at = [NSDate dateWithTimeIntervalSince1970:[[jsonRepresentation objectForKey:@"published_at"] doubleValue]];
-        self.author = [[[StorifyUser alloc] initWithJSONDictionary:[jsonRepresentation objectForKey:@"author"]] autorelease];
-        self.shorturl = [NSURL URLWithString:[jsonRepresentation objectForKey:@"shorturl"]];
-        self.title = [jsonRepresentation objectForKey:@"title"];
-        self.description = [jsonRepresentation objectForKey:@"description"];
-        self.thumbnail = [NSURL URLWithString:[jsonRepresentation objectForKey:@"thumbnail"]];
-        self.topics = [jsonRepresentation objectForKey:@"topics"];
-        NSDictionary *elementsDictionary = [jsonRepresentation objectForKey:@"elements"];
+        NSMutableDictionary *jsonDictionary = [NSMutableDictionary dictionary];
+        NSArray *jsonDictionaryKeys = [jsonRepresentation allKeys];
+        for (id key in jsonDictionaryKeys) {
+            if ([NSNull null] != [jsonRepresentation objectForKey:key]) {
+                [jsonDictionary setObject:[jsonRepresentation objectForKey:key] forKey:key];
+            }
+        }
+        
+        self.permalink = [NSURL URLWithString:[jsonDictionary objectForKey:@"permalink"]];
+        self.published_at = [NSDate dateWithTimeIntervalSince1970:[[jsonDictionary objectForKey:@"published_at"] doubleValue]];
+        self.author = [[[StorifyUser alloc] initWithJSONDictionary:[jsonDictionary objectForKey:@"author"]] autorelease];
+        self.shorturl = [NSURL URLWithString:[jsonDictionary objectForKey:@"shorturl"]];
+        self.title = [jsonDictionary objectForKey:@"title"];
+        self.description = [jsonDictionary objectForKey:@"description"];
+        self.thumbnail = [NSURL URLWithString:[jsonDictionary objectForKey:@"thumbnail"]];
+        self.topics = [jsonDictionary objectForKey:@"topics"];
+        NSDictionary *elementsDictionary = [jsonDictionary objectForKey:@"elements"];
         NSUInteger elementCount = [[elementsDictionary allKeys] count];
         NSMutableArray *elements = [NSMutableArray arrayWithCapacity:elementCount];
         for (NSUInteger count = 0; count < elementCount; count++) {
@@ -44,10 +52,6 @@
             [elements addObject:[[[StorifyElement alloc] initWithJSONDictionary:elementDictionary] autorelease]];
         }
         self.elements = elements;
-        
-        [self createStoryRepository];
-        [self saveStoryHistory];
-        [self saveStory];
     }
     return self;
 }
@@ -69,14 +73,14 @@
 - (NSDictionary *)dictionaryRepresentation {
     NSMutableDictionary *dictionary = [NSMutableDictionary dictionary];
     
-    [dictionary setObject:[self.permalink absoluteString] forKey:@"permalink"];
-    [dictionary setObject:[NSNumber numberWithDouble:[self.published_at timeIntervalSince1970]] forKey:@"published_at"];
+    if (self.permalink != nil) {    [dictionary setObject:[self.permalink absoluteString] forKey:@"permalink"];}
+    if (self.published_at != nil) {    [dictionary setObject:[NSNumber numberWithDouble:[self.published_at timeIntervalSince1970]] forKey:@"published_at"];}
     [dictionary setObject:[self.author dictionaryRepresentation] forKey:@"author"];
-    [dictionary setObject:[self.shorturl absoluteString] forKey:@"shorturl"];
-    [dictionary setObject:self.title forKey:@"title"];
-    [dictionary setObject:self.description forKey:@"description"];
-    [dictionary setObject:[self.thumbnail absoluteString] forKey:@"thumbnail"];
-    [dictionary setObject:self.topics forKey:@"topics"];
+    if (self.shorturl != nil) {[dictionary setObject:[self.shorturl absoluteString] forKey:@"shorturl"];}
+    if (self.title != nil) {    [dictionary setObject:self.title forKey:@"title"];}
+    if (self.description != nil) {    [dictionary setObject:self.description forKey:@"description"];}
+    if (self.thumbnail != nil) {    [dictionary setObject:[self.thumbnail absoluteString] forKey:@"thumbnail"];}
+    if (self.topics != nil) {    [dictionary setObject:self.topics forKey:@"topics"];}
     
     NSMutableDictionary *elementsDictionary = [NSMutableDictionary dictionaryWithCapacity:[self.elements count]];
     [self.elements enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
@@ -95,34 +99,41 @@
     return path;
 }
 
-- (void)createStoryRepository {
++ (NSString *)repositoryPath {
+    return [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];
+}
+
++ (void)createStoryRepository {
     NSFileManager *fileManager = [NSFileManager defaultManager];
 
     //create a repository if necessary
     NSError *error;
     git_repository *repo;
-    if (![fileManager fileExistsAtPath:[self storagePath]]) {
-        [fileManager createDirectoryAtPath:[self storagePath] withIntermediateDirectories:YES attributes:nil error:&error];
+    if (![fileManager fileExistsAtPath:[StorifyStory repositoryPath]]) {
+        [fileManager createDirectoryAtPath:[StorifyStory repositoryPath] withIntermediateDirectories:YES attributes:nil error:&error];
     }
-    if (![fileManager fileExistsAtPath:[[self storagePath] stringByAppendingPathComponent:@".git"]]) {
-        git_repository_init(&repo, [[self storagePath] UTF8String], 0);
+    if (![fileManager fileExistsAtPath:[[StorifyStory repositoryPath] stringByAppendingPathComponent:@".git"]]) {
+        NSLog(@"Creating git repository in %@", [StorifyStory repositoryPath]);
+        git_repository_init(&repo, [[StorifyStory repositoryPath] UTF8String], 0);
+        [fileManager createFileAtPath:[[StorifyStory repositoryPath] stringByAppendingPathComponent:@"readme.md"] contents:[@"A storify story" dataUsingEncoding:NSUTF8StringEncoding] attributes:nil];
+        [self commitFileAtPath:@"readme.md" inRepositoryAtPath:[StorifyStory repositoryPath]];
+        git_repository_free(repo);
     }
-    git_repository_free(repo);
 }
 
 - (void)saveStoryHistory {
     NSMutableDictionary *jsonRepresentation = [NSMutableDictionary dictionaryWithDictionary:[self dictionaryRepresentation]];
     [jsonRepresentation writeToFile:[[self storagePath] stringByAppendingPathComponent:@"story.plist"] atomically:YES];
-    [self commitFileAtPath:@"story.plist" inRepositoryAtPath:[[self storagePath] stringByAppendingPathComponent:@".git"]];
+    [StorifyStory commitFileAtPath:[[self.permalink path] stringByAppendingPathComponent:@"story.plist"] inRepositoryAtPath:[[StorifyStory repositoryPath] stringByAppendingPathComponent:@".git"]];
 }
 
 - (void)saveStory {
     NSMutableDictionary *jsonRepresentation = [NSMutableDictionary dictionaryWithDictionary:[self dictionaryRepresentation]];
     [jsonRepresentation writeToFile:[[self storagePath] stringByAppendingPathComponent:@"story.plist"] atomically:YES];
-    [self commitFileAtPath:@"story.plist" inRepositoryAtPath:[[self storagePath] stringByAppendingPathComponent:@".git"]];
+    [StorifyStory commitFileAtPath:[[self.permalink path] stringByAppendingPathComponent:@"story.plist"] inRepositoryAtPath:[[StorifyStory repositoryPath] stringByAppendingPathComponent:@".git"]];
 }
 
-- (void)commitFileAtPath:(NSString *)relativeFilePath inRepositoryAtPath:(NSString *)pathToGitDir {    
++ (void)commitFileAtPath:(NSString *)relativeFilePath inRepositoryAtPath:(NSString *)pathToGitDir {    
     git_repository *repo;
     git_index *index;
     git_signature *author= git_signature_now("username", "storied@storify.example");
@@ -131,7 +142,7 @@
     
     //add the file to the index
     git_repository_index(&index, repo);
-    git_index_read(index);
+    git_index_read(index);   
     git_index_add(index, [relativeFilePath UTF8String], 0);
     git_index_write(index);
     
@@ -144,10 +155,10 @@
     //look for a reference to master
     git_reference *masterBranchReference;
     int result = git_reference_lookup(&masterBranchReference, repo, "refs/heads/master");
-    git_oid *commitOID;
+    git_oid *commitOID = NULL;
     if (result != 0) {
         //for a new repository without a master branch, create a new branch
-        git_commit_create(commitOID, repo, "HEAD", author, author, "updated story", indexTree, 0, NULL);
+        git_commit_create(commitOID, repo, NULL, author, author, "updated story", indexTree, 0, NULL);
         git_reference_create_oid(&masterBranchReference, repo, "refs/heads/master", commitOID, 0);
         git_reference *headReference;
         git_reference_create_symbolic(&headReference, repo, "HEAD", "refs/heads/master", 0);
@@ -157,7 +168,7 @@
         git_commit *parent;
         const git_oid *parentOID = git_reference_oid(masterBranchReference);
         git_commit_lookup(&parent, repo, parentOID);
-        const git_commit *parents [] = {parent};
+        const git_commit *parents[] = {parent};
         git_commit_create(commitOID, repo, "HEAD", author, author, "updated story again", indexTree, 1, parents);
     }
     

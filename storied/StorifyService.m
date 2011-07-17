@@ -46,6 +46,9 @@
             NSArray *stories = [jsonStories map:^id(id obj) {
                 return [[[StorifyStory alloc] initWithJSONDictionary:obj] autorelease];
             }];
+            for (StorifyStory *story in stories) {
+//                [story saveStory];
+            }
             block(stories);
         }
     }];

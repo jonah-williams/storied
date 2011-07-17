@@ -28,16 +28,24 @@
 - (id)initWithJSONDictionary:(NSDictionary *)jsonRepresentation {
     self = [super init];
     if (self) {
-        self.source = [jsonRepresentation objectForKey:@"source"];
+        NSMutableDictionary *jsonDictionary = [NSMutableDictionary dictionary];
+        NSArray *jsonDictionaryKeys = [jsonRepresentation allKeys];
+        for (id key in jsonDictionaryKeys) {
+            if ([NSNull null] != [jsonRepresentation objectForKey:key]) {
+                [jsonDictionary setObject:[jsonRepresentation objectForKey:key] forKey:key];
+            }
+        }
+        
+        self.source = [jsonDictionary objectForKey:@"source"];
 //        self.image = [NSURL URLWithString:[[jsonRepresentation objectForKey:@"image"] objectForKey:@"href"]];
-        self.elementClass = [jsonRepresentation objectForKey:@"elementClass"];
-        self.permalink = [NSURL URLWithString:[jsonRepresentation objectForKey:@"permalink"]];
-        self.title = [jsonRepresentation objectForKey:@"title"];
-        self.description = [jsonRepresentation objectForKey:@"description"];
-        self.thumbnail = [NSURL URLWithString:[jsonRepresentation objectForKey:@"thumbnail"]];
-        self.author = [[[StorifyUser alloc] initWithJSONDictionary:[jsonRepresentation objectForKey:@"author"]] autorelease];
-        self.created_at = [NSDate dateWithTimeIntervalSince1970:[[jsonRepresentation objectForKey:@"created_at"] doubleValue]];
-        self.added_at = [NSDate dateWithTimeIntervalSince1970:[[jsonRepresentation objectForKey:@"added_at"] doubleValue]];
+        self.elementClass = [jsonDictionary objectForKey:@"elementClass"];
+        self.permalink = [NSURL URLWithString:[jsonDictionary objectForKey:@"permalink"]];
+        self.title = [jsonDictionary objectForKey:@"title"];
+        self.description = [jsonDictionary objectForKey:@"description"];
+        self.thumbnail = [NSURL URLWithString:[jsonDictionary objectForKey:@"thumbnail"]];
+        self.author = [[[StorifyUser alloc] initWithJSONDictionary:[jsonDictionary objectForKey:@"author"]] autorelease];
+        self.created_at = [NSDate dateWithTimeIntervalSince1970:[[jsonDictionary objectForKey:@"created_at"] doubleValue]];
+        self.added_at = [NSDate dateWithTimeIntervalSince1970:[[jsonDictionary objectForKey:@"added_at"] doubleValue]];
     }
     return self;
 }
@@ -61,15 +69,15 @@
 
 - (NSDictionary *)dictionaryRepresentation {
     NSMutableDictionary *dictionary = [NSMutableDictionary dictionary];
-    [dictionary setObject:self.source forKey:@"source"];
-    [dictionary setObject:self.elementClass forKey:@"elementClass"];
-    [dictionary setObject:[self.permalink absoluteString] forKey:@"permalink"];
-    [dictionary setObject:self.title forKey:@"title"];
-    [dictionary setObject:self.description forKey:@"description"];
-    [dictionary setObject:[self.thumbnail absoluteString] forKey:@"thumbnail"];
+    if (self.source != nil) {    [dictionary setObject:self.source forKey:@"source"];}
+    if (self.elementClass != nil) {    [dictionary setObject:self.elementClass forKey:@"elementClass"];}
+    if (self.permalink != nil) {    [dictionary setObject:[self.permalink absoluteString] forKey:@"permalink"];}
+    if (self.title != nil) {    [dictionary setObject:self.title forKey:@"title"];}
+    if (self.description != nil) {    [dictionary setObject:self.description forKey:@"description"];}
+    if (self.thumbnail != nil) {    [dictionary setObject:[self.thumbnail absoluteString] forKey:@"thumbnail"];}
     [dictionary setObject:[self.author dictionaryRepresentation] forKey:@"author"];
-    [dictionary setObject:[[NSNumber numberWithDouble:[self.created_at timeIntervalSince1970]] stringValue] forKey:@"created_at"];
-    [dictionary setObject:[[NSNumber numberWithDouble:[self.added_at timeIntervalSince1970]] stringValue] forKey:@"added_at"];
+    if (self.created_at != nil) {    [dictionary setObject:[[NSNumber numberWithDouble:[self.created_at timeIntervalSince1970]] stringValue] forKey:@"created_at"];}
+    if (self.added_at != nil) {    [dictionary setObject:[[NSNumber numberWithDouble:[self.added_at timeIntervalSince1970]] stringValue] forKey:@"added_at"];}
     return dictionary;
 }
 

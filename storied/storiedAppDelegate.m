@@ -9,6 +9,7 @@
 #import "storiedAppDelegate.h"
 #import "StoriesListViewController.h"
 #import "StoryViewController.h"
+#import "StorifyStory.h"
 
 @implementation storiedAppDelegate
 
@@ -27,6 +28,8 @@
 }
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+//    [StorifyStory createStoryRepository];
+    
     self.splitViewController = [[[UISplitViewController alloc] init] autorelease];
     self.storiesListViewController = [[[StoriesListViewController alloc] init] autorelease];
     self.storyViewController = [[[StoryViewController alloc] init] autorelease];

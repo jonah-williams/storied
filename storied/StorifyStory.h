@@ -28,9 +28,10 @@
 - (id)initWithJSONDictionary:(NSDictionary *)jsonRepresentation;
 - (NSDictionary *)dictionaryRepresentation;
 - (NSString *)storagePath;
-- (void)createStoryRepository;
++ (NSString *)repositoryPath;
++ (void)createStoryRepository;
 - (void)saveStoryHistory;
 - (void)saveStory;
-- (void)commitFileAtPath:(NSString *)relativeFilePath inRepositoryAtPath:(NSString *)pathToGitDir;
++ (void)commitFileAtPath:(NSString *)relativeFilePath inRepositoryAtPath:(NSString *)pathToGitDir;
 
 @end
